@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTE ESTÁGIO TARGET</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+            display: flex;
+            text-align: left;
+            align-items: left;
+            flex-direction: column;
+            margin-left: 30px;
+            gap: 10px;
+        }
+
+        .bd {
+            width: auto;
+            padding: 30px;
+            border: 1px solid gray;
+            margin-bottom: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2>TESTE ESTÁGIO EM DESENVOLVIMENTO - TARGET SISTEMAS</h2>
+    <div class="bd">
+        <p>
+            <b>1)</b> Dado a sequência de Fibonacci, onde se inicia por 0 e 1 e o próximo valor sempre será a soma dos 2
+            valores
+            anteriores (exemplo: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...), escreva um programa na linguagem que desejar onde,
+            informado um número, ele calcule a sequência de Fibonacci e retorne uma mensagem avisando se o número
+            informado
+            pertence ou não a sequência.
+        </p>
+
+        <h3>Verificar se o número pertence à FIBONACCI</h3>
+        <label id="num">Informe um número: </label>
+        <input type="number" id="fib" />
+        <button onclick="fibonacci()"> Verificar número </button>
+
+        <div id="res"></div>
+        <div id="print"></div>
+    </div>
+
+    <div class="bd">
+        <p>
+
+            <b>2)</b> Escreva um programa que verifique, em uma string, a existência da letra ‘a’, seja maiúscula ou
+            minúscula,
+            além de informar a quantidade de vezes em que ela ocorre.
+
+            IMPORTANTE: Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser
+            previamente definida no código;
+        </p>
+
+        <h3>Verificar letra e contar quantas </h3>
+        <label id="letra">Informe um número: </label>
+        <input type="text" id="txt" />
+        <button onclick="validar()"> Verificar palavra </button>
+
+
+        <div id="letras"></div>
+
+    </div>
+
+    <div class="bd">
+        <p>
+            <b>3)</b> Observe o trecho de código abaixo: int INDICE = 12, SOMA = 0,
+            K = 1; enquanto K < INDICE faça { K=K + 1; SOMA=SOMA + K; } imprimir(SOMA); Ao final do processamento, qual
+                será o valor da variável SOMA? 
+        </p>
+
+                <div id="result"></div>
+
+    </div>
+
+
+    <div class="bd">
+        <p>
+            <b>4)</b> Descubra a lógica e complete o próximo elemento:<br><br>
+            a) 1, 3, 5, 7, ___ - Números ímpares, próximo é o 9.<br>
+
+            b) 2, 4, 8, 16, 32, 64, ____ - Números multiplicados por 2, próximo é o 128.<br>
+
+            c) 0, 1, 4, 9, 16, 25, 36, ____ - Números que tem raiz quadrada exata, próximo é o 49(multiplicação de
+            7x7).<br>
+            d) 4, 16, 36, 64, ____ - Números pares elevados a 2, próxmo número par seria 10 elevado a 2 que daria
+            100<br>
+            e) 1, 1, 2, 3, 5, 8, ____ - Fibonacci , próximo número é a soma dos dois últimos na sequência. Próximo é
+            13.<br>
+            f) 2,10, 12, 16, 17, 18, 19, ____ - Esse realmente eu não sei . ; / <br>
+        </p>
+
+        
+
+    </div>
+
+    <div class="bd">
+
+        <p>
+            <b>5)</b> Você está em uma sala com três interruptores, cada um conectado a uma lâmpada em salas diferentes. Você
+            não pode ver as lâmpadas da sala em que está, mas pode ligar e desligar os interruptores quantas vezes
+            quiser. Seu objetivo é descobrir qual interruptor controla qual lâmpada. Como você faria para descobrir,
+            usando apenas duas idas até uma das salas das lâmpadas, qual interruptor controla cada lâmpada?  
+        </p>
+
+        <h3>R: O jeito seria ligar o primeiro interruptor e esperar ela esquentar, na primeira ida olhar qual esquentou
+            e depois ligar a última e validar qual esquentou e saberia a ordem . </h3>
+    </div>
+
+
+
+
+    <script>
+
+        function numeroTres() {
+            var indice = 12;
+            var soma = 0;
+            var k = 1;
+            while (k < indice) {
+                k = k + 1;
+                soma = soma + k;
+            }
+
+            document.getElementById('result').innerText = 'A soma é : ' + soma;
+
+        }
+
+
+        function validar() {
+            let palavra = document.getElementById('txt').value;
+            let quant = 0;
+
+            for (i = 0; i < palavra.length; i++) {
+                const letra = palavra[i];
+                if (letra === 'a' || letra === 'A') {
+                    quant++;
+                }
+            }
+
+            let resposta = '';
+
+            if (quant > 0) {
+                resposta = 'A letra "a" está presente. Ela aparece ' + quant + ' vez(es).'
+            } else {
+                resposta = 'A letra "a" não está presente.'
+            }
+
+            document.getElementById('letras').innerText = resposta;
+
+        }
+
+
+        function fibonacci() {
+            //variável numero convertida em número inteiro e buscada pelo ID
+            let numero = parseInt(document.getElementById('fib').value);
+            //criado duas variáveis começando uma com 0 e 1 para dar início a sequência do cálculo
+            let n1 = 0;
+            let n2 = 1;
+            let proxNum; //próximo número que vai ser a soma dos anteriores
+
+
+            //if para validar os primeiros números
+            if (numero === 0 || numero === 1) {
+                document.getElementById('res').innerText = 'O número ' + numero + ' pertence à Fibonacci';
+                return;
+            }
+
+            //loop para validar a sequência até chegar no número inserido
+            while (true) {
+                //Fibonacci é quando próximo número é a soma dos dois números anteriores na sequência
+                proxNum = n1 + n2;
+                //se esse número inserido for igual a soma dos últimos dois números da sequência , ele pertence a Fibonacci
+                if (proxNum === numero) {
+                    document.getElementById('res').innerText = 'O número ' + numero + ' pertence à Fibonacci';
+                    return;
+                } else if (proxNum > numero) { //se ele for maior que o próximo numero, ele não pertence. Porque o próximo número é a soma, ele é sempre menor que número digitado
+                    document.getElementById('res').innerText = 'O número ' + numero + ' não pertence à Fibonacci';
+                    return;
+                }
+
+
+                //nesta parte o n1 recebe o valor de n2 e n2 recebe o valor da soma dos números para formar a fibonacci
+                //assim quando voltar no loop while eles vão dar sequência nos valores até chegar no número inserido no input
+                n1 = n2;
+                n2 = proxNum;
+
+                document.getElementById('print').innerText = 'Os últimos dois números menores que  ' + numero + ' que pertencem à Fibonacci são: ' + n1 + ' e ' + n2 + ', então o próximo número da sequência será o ' + (n1 + n2);
+
+            }
+        }
+
+        numeroTres();
+    </script>
+</body>
+
+</html>
